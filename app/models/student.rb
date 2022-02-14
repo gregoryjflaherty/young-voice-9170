@@ -10,4 +10,8 @@ class Student <ApplicationRecord
   def professor_count
     self.professors.count
   end
+
+  def self.alphabetical
+    order(name: :asc)
+  end
 end

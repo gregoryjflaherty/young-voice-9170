@@ -28,10 +28,8 @@ RSpec.describe Student, type: :model do
     end
 
     it 'sorts alphabetically' do
-      it 'sorts alphabetically' do
-        results = [@harry, @malfoy]
-        expect(Student.alphabetical).to eq(results)
-      end
+      results = [@malfoy, @harry]
+      expect(Student.alphabetical).to eq(results)
     end
   end
 end
