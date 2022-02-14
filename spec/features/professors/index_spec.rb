@@ -25,6 +25,7 @@ RSpec.describe 'professor index' do
 
   before (:each) do
     @snape = Professor.create(name: "Severus Snape", age: 45, specialty: "Potions")
+    @hagarid = Professor.create(name: "Rubeus Hagrid", age: 38 , specialty: "Care of Magical Creatures")
     @harry = Student.create(name: "Harry Potter" , age: 11 , house: "Gryffindor" )
     @longbottom = Student.create(name: "Neville Longbottom" , age: 12 , house: "Gryffindor" )
     ProfessorStudent.create(student_id: @harry.id, professor_id: @snape.id)
@@ -37,5 +38,12 @@ RSpec.describe 'professor index' do
 
     expect(page).to have_content("Severus Snape")
     expect(page).to have_content("Average Age: 11.5")
+  end
+
+  it 'sorts professors alphabetically' do
+    within '#professors' do
+      expect(page.all('.professor')[0]).to have_content('Rubeus Hagrid')
+      expect(page.all('.professor')[1]).to have_content('Severus Snape')
+    end
   end
 end
