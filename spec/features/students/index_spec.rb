@@ -22,4 +22,13 @@ RSpec.describe 'student index' do
     expect(page).to have_content("Harry Potter: 2")
     expect(page).to have_content("Neville Longbottom: 1")
   end
+
+  it 'sorts students alphabetically' do
+    visit '/students'
+
+    within '#student_index' do
+      expect(page.all('.student')[0]).to have_content('Harry Potter')
+      expect(page.all('.student')[1]).to have_content('Neville Longbottom')
+    end
+  end
 end

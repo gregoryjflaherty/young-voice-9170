@@ -37,7 +37,6 @@ RSpec.describe 'professor index' do
 
   it 'sorts professors alphabetically' do
     visit '/professors'
-    save_and_open_page
 
     within '#prof_index' do
       expect(page.all('.professor')[0]).to have_content('Rubeus Hagrid')
