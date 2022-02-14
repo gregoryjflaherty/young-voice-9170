@@ -1,7 +1,11 @@
 <h1> Professor Index</h1>
-<% @professors.each do |professor| %>
-  <h3><%= professor.name %></h3>
-  <p>Age: <%= professor.age %></p>
-  <p>Specialty: <%= professor.specialty %></p>
-  <p>Average Age: <%= professor.avg_student_age %></p>
+<div id = "prof_index">
+<% @professors.each_with_index do |professor, index| %>
+  <div class="professor">
+    <h3><%= professor.name %></h3>
+    <p>Age: <%= professor.age %></p>
+    <p>Average Age: <%= professor.avg_student_age %></p>
+    <p>Specialty: <%= professor.specialty %></p>
+  </div>
 <% end %>
+</div>
