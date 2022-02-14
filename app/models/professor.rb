@@ -9,4 +9,8 @@ class Professor <ApplicationRecord
   def avg_student_age
     self.students.average(:age).to_f
   end
+
+  def self.alphabetical
+    order(name: :asc)
+  end
 end

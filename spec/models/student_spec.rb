@@ -21,8 +21,13 @@ RSpec.describe Student, type: :model do
       ProfessorStudent.create(student_id: @harry.id, professor_id: @snape.id)
       ProfessorStudent.create(student_id: @harry.id, professor_id: @hagarid.id)
     end
+
     it 'counts teachers' do
       expect(@harry.professor_count).to be(2)
+    end
+
+    it 'sorts alphabetically' do
+
     end
   end
 end

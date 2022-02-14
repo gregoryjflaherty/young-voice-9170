@@ -16,6 +16,7 @@ RSpec.describe Professor, type: :model do
   describe 'methods' do
     before (:each) do
       @snape = Professor.create(name: "Severus Snape", age: 45, specialty: "Potions")
+      @hagarid = Professor.create(name: "Rubeus Hagrid", age: 38 , specialty: "Care of Magical Creatures")
       @harry = Student.create(name: "Harry Potter" , age: 11 , house: "Gryffindor" )
       @malfoy = Student.create(name: "Draco Malfoy" , age: 12 , house: "Slytherin" )
       ProfessorStudent.create(student_id: @harry.id, professor_id: @snape.id)
@@ -24,6 +25,12 @@ RSpec.describe Professor, type: :model do
 
     it 'gives average age of students per professor' do
       expect(@snape.avg_student_age).to eq(11.5)
+    end
+
+
+    it 'sorts alphabetically' do
+      results = [@hagarid, @snape]
+      expect(Professor.alphabetical).to eq(results)
     end
   end
 end
