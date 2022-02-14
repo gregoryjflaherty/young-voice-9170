@@ -19,7 +19,6 @@ RSpec.describe 'student index' do
   it "I see a list of students and the number of professors each student has." do
     visit "/students"
     expect(current_path).to eq("/students")
-    save_and_open_page
     expect(page).to have_content("Harry Potter: 2")
     expect(page).to have_content("Neville Longbottom: 1")
   end
