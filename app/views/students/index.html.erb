@@ -1,5 +1,9 @@
 <h1> Student Index </h1>
 <h3> With Count of Professors </h3>
-<% @students.each do |student| %>
+<div id = "student_index">
+<% @students.each_with_index do |student, index| %>
+  <div class="student">
   <p><%= "#{student.name}: #{student.professor_count}"%></p>
+  </div>
 <% end %>
+</div>
