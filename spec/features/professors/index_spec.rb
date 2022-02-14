@@ -22,4 +22,20 @@ RSpec.describe 'professor index' do
     expect(page).to have_content("Potions")
     expect(page).to have_content("Care of Magical Creatures")
   end
+
+  before (:each) do
+    @snape = Professor.create(name: "Severus Snape", age: 45, specialty: "Potions")
+    @harry = Student.create(name: "Harry Potter" , age: 11 , house: "Gryffindor" )
+    @longbottom = Student.create(name: "Neville Longbottom" , age: 12 , house: "Gryffindor" )
+    ProfessorStudent.create(student_id: @harry.id, professor_id: @snape.id)
+    ProfessorStudent.create(student_id: @longbottom.id, professor_id: @snape.id)
+  end
+
+  it "I see the average age of all students for that professor" do
+    visit '/professors'
+    expect(current_path).to eq('/professors')
+
+    expect(page).to have_content("Severus Snape")
+    expect(page).to have_content("Average Age: 11.5")
+  end
 end
